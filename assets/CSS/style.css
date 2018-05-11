@@ -1,0 +1,43 @@
+
+.navbar {
+    background-image: url("images/jumbo.png");
+    text-align: left;
+    padding-left: 15%;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 60px;
+    color: #e91890;
+}
+
+body {
+    background-image: url(images/advgd_final_trainmap.jpg);
+}
+
+.box {
+    margin-left: 7%;
+    margin-top: 4%;
+}
+
+.card-header {
+    text-align: center;
+    background-color:#fccc30;
+    font-family: 'Press Start 2P',cursive;
+    font-size: 20px;
+}
+
+label {
+    background-color: #30fc63
+
+}
+
+.card {
+    border-color: #30fc63;
+    border-style: dashed;
+    border-width: 5px;
+    height: 900px;
+    /* background-color:  */
+}
+
+button {
+    background-color: rgb(31, 31, 53)
+}
+
