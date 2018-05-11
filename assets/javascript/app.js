@@ -28,27 +28,44 @@ window.onload = function () {
 
     $(document).on("click", ".btn", function () {
         // Initial Values
-        var tName = $("#trainName").val();
-        console.log(tName);
-        var destination = $("#destination").val();
         // var frequency = initial;
         // var nextArrival = initial;
         // var minAway = tbd;
-       console.log(tName);
-       console.log(destination);
+
+        var tName = $("#trainName").val();
+        var destination = $("#destination").val();
 
             var table = document.getElementById("myTable");
             var row = table.insertRow(1);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
+            // var cell3 = row.insertCell(2);
+            // var cell4 = row.insertCell(3);
+            // var cell5 = row.insertCell(4);
             cell1.innerHTML = tName;
             cell2.innerHTML = destination;
-            cell3.innerHTML = var frequency;
-        
+            // cell3.innerHTML = frequency;
+            // cell4.innerHTML = nextArrival;
+            // cell5.innerHTML = minutesAway;
+               console.log(tName);
+               console.log(destination);
 
     });
 
+var input = $('#manual-operations-input').pickatime({
+    autoclose: true,
+    'default': 'now'
+});
+
+// Manually toggle to the minutes view
+$('#check-minutes').click(function (e) {
+    e.stopPropagation();
+    input.pickatime('show').pickatime('toggleView', 'minutes');
+});
+
 };
+
+
 
 
 // ----------------------------------------------------------------
