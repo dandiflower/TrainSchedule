@@ -8,13 +8,19 @@
     <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
     <title>Train Schedule</title>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous"></link>
+
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto" rel="stylesheet">
+
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" /> -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css"/>
+    
+    <!-- LINK TO FIREBASE GOES HERE -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
     <title>Train Schedule</title>
 </head>
@@ -35,24 +41,24 @@
             <div class="card-header p-3">Add Train</div>
                 <div class="card-text p-3">
 
-                    <label for="search-term">Train Name:</label>
+                    <label for="trainName">Train Name:</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="search-term" aria-describedby="basic-addon3">
+                        <input onfocus="this.value=' '" class="form-control" id="trainName" type="text">
                     </div>
-                    <label for="search-term">Destination:</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="search-term" aria-describedby="basic-addon3">
+                    <label for="destination">Destination:</label>
+                    <div onfocus="this.value=' '" class="input-group mb-3">
+                        <input type="text" class="form-control" id="destination" aria-describedby="basic-addon3">
                     </div>
-                    <label for="begin-time">First Train Time (HH:mm - military time)</label>
-                    <div class="bootstrap-timepicker mb-3">
+                    <label for="to-time">First Train Time (HH:mm - military time)</label>
+                    <div onfocus="this.value=' '" class="bootstrap-timepicker mb-3">
                         <input type="time" class="form-control" id="to_time" aria-describedby="basic-addon3">
                     </div>
-                    <label for="search-term">Frequency (min):</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="search-term" aria-describedby="basic-addon3">
+                    <label for="freq">Frequency (min):</label>
+                    <div onfocus="this.value=' '" class="input-group mb-3">
+                        <input type="text" class="form-control" id="freq" aria-describedby="basic-addon3">
                     </div>
                     
-                    <button class="btn btn-dark" id="submit">Submit</button>
+                    <button class="btn btn-dark" type="submit">Submit</button>
 
                 </div>
             
@@ -67,7 +73,7 @@
                 <div class="card-header p-3">Current Train Schedule</div>
                 <div class="card-text p-3">
 
-<table class="table table-md table-dark">
+<table class="table table-md table-dark" id="myTable">
     <thead>
         <tr>
             <th scope="col">Train Name</th>
@@ -78,9 +84,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">row</th>
-            <td></td>
+        <tr id="new-entry">
+            <td input type="text"></td>
             <td></td>
             <td></td>
             <td></td>
@@ -102,7 +107,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="assets/javascript/app.js"></script> -->
+    <script src="assets/javascript/app.js"></script>
+
 </body>
 
 </html>
