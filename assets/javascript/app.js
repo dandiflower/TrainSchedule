@@ -16,13 +16,19 @@ var config = {
 };
 firebase.initializeApp(config);
 
+
 // --------------------------------------------------------------
 // Link to Firebase Database for viewer tracking
 var database = firebase.database();
-
-
-
 window.onload = function () {
+
+// initial values
+var tName = "";
+var destination = "";
+var militaryTime = 0;
+var freq = 0;
+
+
 // --------------------------------------------------------------
 // Dynamically update table entry with user information
 
@@ -33,9 +39,10 @@ window.onload = function () {
         // var nextArrival = initial;
         // var minAway = tbd;
 
-        var tName = $("#trainName").val();
-        var destination = $("#destination").val();
+        tName = $("#trainName").val().trim();
+        destination = $("#destination").val().trim();
 
+            // table value input
             var table = document.getElementById("myTable");
             var row = table.insertRow(1);
             var cell1 = row.insertCell(0);
@@ -52,23 +59,30 @@ window.onload = function () {
             //    console.log(destination);
 
   
+        // grab values form textboxes
+        militaryTime = $("#starttime").val().trim();
+        console.log(militaryTime);
+        freq = $("#freq").val().trim();
+        console.log(freq);
 
 
+            // Code for handling the push
+            database.ref().push({
+                tName: tName,
+                destination: destination,
+                militaryTime: militaryTime,
+                freq: freq,
+            });
 
+        });
 
-
-
-
-    // Get the input values
-    var militaryTime = $("#starttime").val().trim();
-    console.log(militaryTime);
 // ----------------------------------------------------------------
 // At the page load and subsequent value changes, get a snapshot of the local data.
 // This function allows you to update your page in real-time when the values within the firebase node bidderData changes
 
 // database.ref("/starttime").on({
-    //     // Set the local variables for highBidder equal to the stored values in firebase.
-    //     highBidder = snapshot.val().highBidder;
+//     //     // Set the local variables for highBidder equal to the stored values in firebase.
+//         militaryTime = snapshot.val().militaryTime;
     //     highPrice = parseInt(snapshot.val().highPrice);
 
     //     // change the HTML to reflect the newly updated local values (most recent information from firebase)
@@ -78,8 +92,8 @@ window.onload = function () {
         // Print the local data to the console.
 
         // console.log(snapshot.val().highPrice);
-});
 };
+
 
 //     // Else Firebase doesn't have a highPrice/highBidder, so use the initial local values.
 //     else {
