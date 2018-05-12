@@ -67,9 +67,9 @@ var database = firebase.database();
         var train = {
             tName: tName,
             destination: destination,
-            militaryTime: militaryTime,
-            nextTrain: nextTrain,
             freq: freq,
+            nextTrain: nextTrain.toLocaleString(),
+            tMinutesTillTrain: tMinutesTillTrain,
         };
 
             
@@ -84,33 +84,39 @@ var database = firebase.database();
     console.log(train.freq);
 });
 
-// database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
-//         // grab values from textboxes 
-//         tName = $("#trainName").val().trim();
-//         destination = $("#destination").val().trim();
-//         militaryTime = $("#starttime").val().trim();
-//         console.log(militaryTime);
-//         freq = $("#freq").val().trim();
-//         console.log(freq);
+        // grab values from textboxes 
+        // tName = $("#trainName").val().trim();
+        // destination = $("#destination").val().trim();
+        // militaryTime = $("#starttime").val().trim();
+        // console.log(militaryTime);
+        // freq = $("#freq").val().trim();
+        // console.log(freq);
 
-//         // table value input from DOM
-//         var table = document.getElementById("myTable");
-//         var row = table.insertRow(1);
-//         var cell1 = row.insertCell(0);
-//         var cell2 = row.insertCell(1);
-//         var cell3 = row.insertCell(2);
-//         // var cell4 = row.insertCell(3);
-//         // var cell5 = row.insertCell(4);
-//         cell1.innerHTML = tName;
-//         cell2.innerHTML = destination;
-//         cell3.innerHTML = freq;
-//         // cell4.innerHTML = nextTrain;
-//         // cell5.innerHTML = tMinutesTillTrain;
-//         //    console.log(tName);
-//         //    console.log(destination);
+    var tName = childSnapshot.val().tName;
+    var destination = childSnapshot.val().destination;
+    var freq = childSnapshot.val().freq;
+    var nextTrain = childSnapshot.val().nextTrain;
+    var tMinutesTillTrain = childSnapshot.val().tMinutesTillTrain;
 
-//         });
+        // table value input from DOM
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        cell1.innerHTML = tName;
+        cell2.innerHTML = destination;
+        cell3.innerHTML = freq;
+        cell4.innerHTML = nextTrain;
+        cell5.innerHTML = tMinutesTillTrain;
+        //    console.log(tName);
+        //    console.log(destination);
+
+        });
 
 
 
