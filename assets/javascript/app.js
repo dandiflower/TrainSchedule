@@ -27,6 +27,7 @@ window.onload = function () {
 // Dynamically update table entry with user information
 
     $(document).on("click", ".btn", function () {
+        event.preventDefault();
         // Initial Values
         // var frequency = initial;
         // var nextArrival = initial;
@@ -47,47 +48,38 @@ window.onload = function () {
             // cell3.innerHTML = frequency;
             // cell4.innerHTML = nextArrival;
             // cell5.innerHTML = minutesAway;
-               console.log(tName);
-               console.log(destination);
+            //    console.log(tName);
+            //    console.log(destination);
 
-    });
-
-var input = $('#manual-operations-input').pickatime({
-    autoclose: true,
-    'default': 'now'
-});
-
-// Manually toggle to the minutes view
-$('#check-minutes').click(function (e) {
-    e.stopPropagation();
-    input.pickatime('show').pickatime('toggleView', 'minutes');
-});
-
-};
+  
 
 
 
 
+
+
+
+    // Get the input values
+    var militaryTime = $("#starttime").val().trim();
+    console.log(militaryTime);
 // ----------------------------------------------------------------
 // At the page load and subsequent value changes, get a snapshot of the local data.
 // This function allows you to update your page in real-time when the values within the firebase node bidderData changes
-// database.ref("/bidderData").on("value", function (snapshot) {
 
-//     // If Firebase has a highPrice and highBidder stored (first case)
-//     if (snapshot.child("highBidder").exists() && snapshot.child("highPrice").exists()) {
+// database.ref("/starttime").on({
+    //     // Set the local variables for highBidder equal to the stored values in firebase.
+    //     highBidder = snapshot.val().highBidder;
+    //     highPrice = parseInt(snapshot.val().highPrice);
 
-//         // Set the local variables for highBidder equal to the stored values in firebase.
-//         highBidder = snapshot.val().highBidder;
-//         highPrice = parseInt(snapshot.val().highPrice);
+    //     // change the HTML to reflect the newly updated local values (most recent information from firebase)
+    //     $("#highest-bidder").text(snapshot.val().highBidder);
+    //     $("#highest-price").text("$" + snapshot.val().highPrice);
 
-//         // change the HTML to reflect the newly updated local values (most recent information from firebase)
-//         $("#highest-bidder").text(snapshot.val().highBidder);
-//         $("#highest-price").text("$" + snapshot.val().highPrice);
+        // Print the local data to the console.
 
-//         // Print the local data to the console.
-//         console.log(snapshot.val().highBidder);
-//         console.log(snapshot.val().highPrice);
-//     }
+        // console.log(snapshot.val().highPrice);
+});
+};
 
 //     // Else Firebase doesn't have a highPrice/highBidder, so use the initial local values.
 //     else {
@@ -109,12 +101,11 @@ $('#check-minutes').click(function (e) {
 
 // // --------------------------------------------------------------
 
-// // Whenever a user clicks the submit-bid button
-// $("#submit-bid").on("click", function (event) {
-//     event.preventDefault();
+// Whenever a user clicks the submit-bid button
 
-//     // Get the input values
-//     var bidderName = $("#bidder-name").val().trim();
+    
+
+
 //     var bidderPrice = parseInt($("#bidder-price").val().trim());
 //     console.log(bidderPrice);
 //     // Log to console the Bidder and Price (Even if not the highest)
@@ -148,5 +139,6 @@ $('#check-minutes').click(function (e) {
 
 //         // Alert
 //         alert("Sorry that bid is too low. Try again.");
-//     }
-// });
+// 
+
+
