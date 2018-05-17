@@ -4,11 +4,11 @@ Users input train data and a table is generated with information regarding the t
 
 ## Built With
 
+* Javascript
+* HTML5
+* CSS
 * Moment js
 * Firebase
-* Javascript
-* HTML
-* CSS
 
 ## Author
 
@@ -21,3 +21,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Berkeley Bootcamp
+
+## Link
+
+* (https://dandiflower.github.io/TrainSchedule/)
